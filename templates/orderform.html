@@ -1,0 +1,17 @@
+{% extends 'base.html'%}
+{% load static %}
+{%block title %}Order{%endblock title%}
+{%block content %}
+<div class="row">
+    <div class="col-6 mx-auto my-5">
+        <p class="lead fs-4">Order Details</p>
+        <form action="" method="post">
+            {% csrf_token %}
+            <input type="text" name="address" class="form-control w-50" placeholder="Address" id=""><br>
+            <input type="number" name="phone" class="form-control w-50" placeholder="Phone" id=""><br>
+            <input type="number" name="accnum" class="form-control w-50" placeholder="Account Number" id=""><br>
+            <button type="submit" class="btn btn-success w-25 form-control" id="">Place Order</button>
+        </form>
+    </div>
+</div>
+{% endblock content %}

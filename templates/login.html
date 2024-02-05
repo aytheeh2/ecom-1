@@ -1,0 +1,16 @@
+{% extends 'base.html'%}
+{% load static %}
+{%block title %}Login{%endblock title%}
+{%block content %}
+<div class="row">
+    <div class="col-6 mx-auto my-5">
+        <p class="lead fs-4">Login</p>
+        <form action="" method="post">
+            {% csrf_token %}
+            <input type="text" name="username" class="form-control w-50" placeholder="Username" id=""><br>
+            <input type="password" name="password" class="form-control w-50" placeholder="Password" id=""><br>
+            <button type="submit" class="btn btn-dark w-25 form-control" id="">Login</button>
+        </form>
+    </div>
+</div>
+{% endblock content %}

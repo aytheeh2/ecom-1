@@ -1,0 +1,25 @@
+{% extends 'base.html'%}
+{% load static %}
+{%block title %}{{category}}{%endblock title%}
+{%block content %}
+<p class="display-3 m-5 p-5 text-center">{{category}}</p>
+<div class="container-fluid m-0 p-0 text-center">
+    <img src="{{category.img.url}}" alt="" class="img-fluid w-100">
+</div>
+<div class="container my-5 py-5 ">
+    <div class="row my-5 text-center">
+        {% for i in product_details %}
+        <div class="col-4 mx-auto text-center">
+            <div class="container-fluid my-3">
+                <img src="{{i.img.url}}" class="shadow-sm img-fluid" alt="...">
+            </div>
+            <h5 class="display-6 my-3">{{i.name}}</h5>
+            <p class="lead my-3 fs-3">$ {{i.price}}</p>
+            <p class="lead my-2 fs-5">$ {{i.desc}}</p>
+            <a href="{% url 'shop:product_details' i.name %}" class="btn btn-dark mt-auto">View Details{{i.name}}</a>
+        </div>
+        {%endfor%}
+    </div>
+</div>
+</div>
+{% endblock content %}

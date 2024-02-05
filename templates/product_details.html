@@ -1,0 +1,20 @@
+{% extends 'base.html'%}
+{% load static %}
+{%block title %} | {{product.name}}{%endblock title%}
+{%block content %}
+<div class="container">
+    <div class="row my-5 text-center">
+        <div class="col-6 mx-auto my-5">
+            <img src="{{product.img.url}}" alt="" class="img-fluid shadow-sm">
+        </div>
+        <div class="col-5 p-3 text-start my-5 mx-auto">
+            <p class="display-5">{{product.name}}</p>
+            <p class="lead fs-4">$ {{product.price}}</p>
+            <p class="lead fs-4">{{product.desc}}</p>
+            <a href="{% url 'cart:addToCart' product.name %}" class="btn btn-dark">Add to Cart</a>
+        </div>
+    </div>
+</div>
+{{product.name}}
+
+{%endblock%}

@@ -1,0 +1,17 @@
+#body {
+    color: black;
+    font-family: 'PT Serif', serif;
+    background-color:white;
+}
+
+#header-img {
+    height: 250px;
+    width: 250px;
+}
+
+#footer {
+    position: fixed;
+    bottom: 0;
+    background-color: white;
+    width: 100%;
+}

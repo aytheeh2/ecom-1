@@ -1,0 +1,12 @@
+{% extends 'base.html'%}
+{% load static %}
+{%block title %}Order Details{%endblock title%}
+{%block content %}
+<div class="row">
+    <div class="col-6 mx-auto text-center my-5">
+        <p class="lead fs-4">Order Details</p>
+        <p class="text-success text-center">{{msg}}</p>
+        <a href="{% url 'shop:home' %}" class="text-success text-center">Continue Shopping</a>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,73 @@
+{% extends 'base.html'%}
+{% load static %}
+{%block title %}Cart{%endblock title%}
+{%block content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-6">
+            <p class="display-5">Cart</p>
+            <div class="p-3 mx-2">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Product</th>
+                            <th scope="col">Image</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Subtotal</th>
+                            <th scope="col">!!!</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in items %}
+                        <tr>
+                            <td scope="row">{{i.product.name}}</td>
+                            <td><img src="{{i.product.img.url}}" class="img-fluid" width="100px" alt=""></td>
+                            <td>{{i.quantity}}</td>
+                            <td>$ {{i.subtotal}}</td>
+                            <td class="text-center">
+                                {% if i.quantity < i.product.stock %} <a
+                                    href="{% url 'cart:addToCart' i.product.name %}" class="btn btn-success mx-1"><i
+                                        class="bi bi-plus-square"></i></a>
+                                    <a href="{% url 'cart:subFromCart' i.product.name %}"
+                                        class="btn btn-secondary mx-1"><i class="bi bi-dash-square"></i></a>
+                                    <a href="{% url 'cart:deleteFromCart' i.product.name %}"
+                                        class="btn btn-danger mx-1"><i class="bi bi-trash"></i></a>
+                                    {% else %}
+                                    <a href="{% url 'cart:subFromCart' i.product.name %}"
+                                        class="btn btn-secondary mx-1"><i class="bi bi-dash-square"></i></a>
+                                    <a href="{% url 'cart:deleteFromCart' i.product.name %}"
+                                        class="btn btn-danger mx-1"><i class="bi bi-trash"></i></a>
+                                    {% endif %}
+                            </td>
+                        </tr>
+                        {%endfor%}
+                    </tbody>
+                </table>
+            </div>
+
+
+
+        </div>
+        <div class="col-5 ">
+            <p class="display-6">Check Out</p>
+            <div class="p-3 mx-2">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Bill Total: </th>
+                            <th class="text-start">${{cartTotal}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td scope="col"><a href="{% url 'cart:orderform' %}" class="btn btn-success">Place Order</a>
+                                <a href="{% url 'shop:home' %}" class="btn btn-dark">Continue Shopping</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

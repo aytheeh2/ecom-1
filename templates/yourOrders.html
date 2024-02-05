@@ -1,0 +1,29 @@
+{% extends 'base.html'%}
+{% load static %}
+{%block title %}Your Orders{%endblock title%}
+{%block content %}
+<div class="container">
+    <div class="row">
+        <p class="lead fs-2 text-center my-5 pt-5">Orders</p>
+        <div class="col-10 mx-auto my-5">
+            <div class="lead">Name of Customer : <span class="lead">{{user}}</span></div>
+        </div>
+        {% for i in orders %}
+        <div class="row">
+            <div class="col-3 mx-auto my-3">
+                <div class="container-fluid ">
+                    <img src="{{i.product.img.url}}" style="width: 15vw;" alt="" class="img-fluid">
+                </div>
+            </div>
+            <div class="col my-3 justify-content-center">
+                <p class="lead">Product : <span class="lead">{{i.product.name}}</span></p>
+                <p class="lead">Price : <span class="lead">{{i.product.price}}</span></p>
+                <p class="lead">Address : <span class="lead">{{i.address}}</span></p>
+                <p class="lead">Phone : <span class="lead">{{i.phone}}</span></p>
+                <p class="lead">Date Ordered : <span class="lead">{{i.date_added}}</span></p>
+                <p class="lead">Delivery Status : <span class="lead">{{i.delivery_status}}</span></p>
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+    {% endblock content %}
